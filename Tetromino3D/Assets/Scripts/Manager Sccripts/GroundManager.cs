@@ -7,7 +7,7 @@ public class GroundManager : MonoBehaviour
     public GameObject groundPrefab;
     public GameObject firstGround;
 
-    private bool finishMoveGround;
+    public bool finishMoveGround;
     private bool finishedRandomGround;
     private List<GameObject> listGroundForward = new List<GameObject>();
     private List<GameObject> listGroundBack = new List<GameObject>();
@@ -20,12 +20,11 @@ public class GroundManager : MonoBehaviour
     {
         firstForwardPos = firstGround.transform.position + Vector3.forward * firstGround.transform.localScale.z +
             new Vector3(0,-10,0);
-        firsBackPos = firstGround.transform.position + Vector3.back * firstGround.transform.localScale.z * 2 +
+        firsBackPos = firstGround.transform.position + Vector3.back * firstGround.transform.localScale.z +
             new Vector3(0, -10, 0);
 
         StartCoroutine(RandomGroundForward(firstForwardPos, numberOfGrounds,listGroundForward));
-        StartCoroutine(RandomGroundBack(firsBackPos, numberOfGrounds, listGroundForward));
-
+        StartCoroutine(RandomGroundBack(firsBackPos, numberOfGrounds, listGroundBack));
     }
 
     void Update()
